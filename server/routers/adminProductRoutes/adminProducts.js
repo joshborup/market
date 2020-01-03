@@ -7,7 +7,7 @@ const {
   deleteProduct,
   updateProduct,
   createProduct
-} = require("./productController");
+} = require("./adminProductController");
 
 // define the all products
 products
@@ -18,7 +18,7 @@ products
 products
   .route("/:id")
   .get(getProductByID)
-  .post(updateProduct)
+  .put(updateProduct)
   .delete(deleteProduct);
 
 // define the individual product

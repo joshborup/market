@@ -4,7 +4,8 @@ const app = express();
 const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-const products = require("./routers/products/products");
+const adminProductRoutes = require("./routers/adminProductRoutes/adminProducts");
+// const customerProductRoutes = require("./routers/customerProductRoutes/customerProductController");
 
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
 const store = new MongoStore({
@@ -34,7 +35,8 @@ mongoose
     console.log("connected to DB");
   });
 
-app.use("/products", products);
+app.use("/admin_products", adminProductRoutes);
+// app.use("/customer__products", customerProductRoutes);
 
 const PORT = SERVER_PORT || 4000;
 app.listen(PORT, () => console.log(`server listening on port ${PORT}`));
